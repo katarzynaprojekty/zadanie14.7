@@ -1,8 +1,14 @@
 var ContactForm = React.createClass({
-	propTypes: {
-		contact: React.PropTypes.object.isRequired
-	},
+    propTypes: {
+        onFormSubmit: React.PropTypes.func.isRequired
+    },
 
+    handleFormSubmit: function(event) {
+        event.preventDefault();
+        this.props.onFormSubmit(this.state)
+    },
+
+    
     render: function() {
         return (
             <form className= {'contactForm'} onSubmit={this.handleFormSubmit}>

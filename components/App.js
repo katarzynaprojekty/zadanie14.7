@@ -30,7 +30,7 @@ var App = React.createClass({
             contacts: contacts
         }
     },
-    newContactAdded: function (details) {
+    newContact: function (details) {
         this.setState(function (state) {
             return {
                 contacts: Array.prototype.concat.call({
@@ -38,15 +38,16 @@ var App = React.createClass({
                     firstName: details.firstName,
                     lastName: details.lastName,
                     email: details.email
-                }, state.contacts)
+                }, 
+                state.contacts)
             }
         })
     },
     render: function() {
         return (
             <div className={'app'}>
-                <ContactForm onFormSubmit={this.newContactAdded}/>
-                <Contacts items={this.state.contacts}/>
+                <ContactForm contact={contactForm} />
+                <Contacts items={contacts} />
             </div>
         );
     }
