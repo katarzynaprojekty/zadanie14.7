@@ -18,11 +18,11 @@ var contacts = [{
 	}
 ];
 
-var contactForm = {
-    firstName: '',
-    lastName: '',
-    email: ''
-};
+// var contactForm = {
+//     firstName: '',
+//     lastName: '',
+//     email: ''
+// };
 
 var App = React.createClass({
     getInitialState: function() {
@@ -31,23 +31,23 @@ var App = React.createClass({
         }
     },
     newContact: function (details) {
-        this.setState(function (state) {
-            return {
-                contacts: Array.prototype.concat.call({
-                    id: contacts.length + 1,
-                    firstName: details.firstName,
-                    lastName: details.lastName,
-                    email: details.email
-                }, 
-                state.contacts)
-            }
-        })
+        this.setState({
+            contact: [
+                {
+                    id: this.state.contacts.length + 1,
+                    ...details
+                }
+            ],
+            ...this.state.contacts
+        });
     },
     render: function() {
         return (
             <div className={'app'}>
-                <ContactForm contact={contactForm} />
-                <Contacts items={contacts} />
+                <ContactForm onFormSubmit = { 
+                    this.newContact
+                }/>
+                <Contacts items={this.state.contacts} />
             </div>
         );
     }
