@@ -34,11 +34,11 @@ var App = React.createClass({
         this.setState({
             contact: [
                 {
-                    id: this.state.contacts.length + 1,
+                    id: this.state.contact.length + 1,
                     ...details
-                }
-            ],
-            ...this.state.contacts
+                },
+                ...this.state.contact
+            ],      
         });
     },
     render: function() {
